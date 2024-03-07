@@ -14,7 +14,7 @@ vec2quantize = np.random.uniform(low=-200, high=200, size=90)
 colorOfFP = {'F2P': 'green', 'FP': 'blue'}
 file_path = '../res/images/F2PvsFP.png'
 
-class Quantizer:
+class FPQuantizer:
     def __init__(self, vec2quantize, quantizedRange):
         self.vec2quantize = vec2quantize
         self.quantizedRange = quantizedRange
@@ -66,7 +66,7 @@ class Quantizer:
 if __name__ == '__main__':
     main()
     for mode, quantizedRange in getAllF2PAndFPVals.items():
-        quantizer = Quantizer(vec2quantize, quantizedRange)
+        quantizer = FPQuantizer(vec2quantize, quantizedRange)
         (vec2quantize, error)= quantizer.runSimulation()
         plt.stem(vec2quantize, error, linefmt=colorOfFP[mode], markerfmt=colorOfFP[mode], label=mode, basefmt='r-')
 
